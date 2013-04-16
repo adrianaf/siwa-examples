@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="firstBean" class="it.uniroma2.siwa.beans.FirstBean"
+		scope="prototype">
+		<!-- <property name="message">
+			<value>Hello world!</value>
+		</property> -->
+
+		<property name="secondBean">
+			<ref bean="secondBean" />
+		</property>
+		<!--<property name="thirdBean">
+			<ref bean="thirdBean" />
+		</property>-->
+
+		<constructor-arg>
+			<ref bean="thirdBean" />
+		</constructor-arg>
+		<!--<constructor-arg>
+			<ref bean="yetAnotherBean" />
+		</constructor-arg>-->
+	</bean>
+
+	<bean id="secondBean" class="it.uniroma2.siwa.beans.SecondBean">
+	</bean>
+	
+	<bean id="thirdBean" class="it.uniroma2.siwa.beans.ThirdBean">
+		<property name="x">
+			<value>2</value>
+		</property>
+	</bean>
+
+</beans>
